@@ -54,7 +54,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border: solid 1px #bdc3c7;
+    border-left: solid 10px #3498db;
     padding: 20px;
     margin: 20px;
 }
