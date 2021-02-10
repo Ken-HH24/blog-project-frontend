@@ -1,0 +1,79 @@
+<template>
+    <div id="index">
+        <app-header></app-header>
+        <div class="body">
+            <h1>Welcome {{ user }}</h1>
+            <input type="text" v-model="search" placeholder="search blog" />
+            <div id="blogs-preview">
+                <preview v-for="blog in filterBlogs" v-bind:blog="blog" v-bind:key="blog.id" v-bind:width="50"></preview>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import appheader from "./header.vue";
+import preview from "./preview.vue";
+
+export default {
+    components: {
+        "app-header": appheader,
+        preview: preview,
+    },
+
+    created() {
+        this.$axios.get("http://localhost:3000/allBlogs").then((res) => {
+            console.log(res.data);
+            this.blogs = res.data;
+        });
+    },
+
+    data() {
+        return {
+            user: "Ken",
+            search: "",
+            blogs: [],
+        };
+    },
+
+    computed: {
+        filterBlogs: function () {
+            return this.blogs.filter((blog) => {
+                return blog.title.match(this.search);
+            });
+        },
+    },
+};
+</script>
+
+<style scoped>
+#index {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.body {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    width: 40%;
+    height: 30px;
+    padding-left: 10px;
+    margin: 20px 0;
+}
+
+#blogs-preview {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+</style>
