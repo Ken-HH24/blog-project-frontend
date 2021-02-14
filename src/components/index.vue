@@ -23,14 +23,12 @@ export default {
 
     created() {
         this.$axios.get("http://localhost:3000/allBlogs").then((res) => {
-            console.log(res.data);
             this.blogs = res.data;
         });
     },
 
     data() {
         return {
-            user: "Ken",
             search: "",
             blogs: [],
         };
@@ -42,6 +40,10 @@ export default {
                 return blog.title.match(this.search);
             });
         },
+
+        user: function(){
+            return this.$store.getters.getUser;
+        }
     },
 };
 </script>

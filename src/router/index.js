@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import index from '../components/index.vue'
-import singleBlog from '../components/singleBlog.vue'
-import editBlog from '../components/editBlog.vue'
+import singleBlog from '../components/singleBlogPage.vue'
+import editBlog from '../components/editBlogPage.vue'
+import login from '../components/login.vue'
+import register from '../components/register.vue'
 
 Vue.use(Router)
 
@@ -10,7 +12,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: '/index',
       component: index,
     },
     {
@@ -20,6 +22,18 @@ export default new Router({
     {
       path: '/editBlog',
       component: editBlog,
+    },
+    {
+      path: '/login',
+      component: login,
+    },
+    {
+      path: '/',
+      component: login,
+    },
+    {
+      path: '/register',
+      component: register,
     }
   ]
 })

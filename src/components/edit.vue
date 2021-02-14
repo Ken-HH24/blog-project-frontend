@@ -49,7 +49,7 @@ export default {
                     },
                 })
                 .then((res) => {
-                    this.$router.push("/");
+                    this.$router.push("/index");
                 });
         },
     },

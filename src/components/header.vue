@@ -17,16 +17,17 @@ export default {
 
     methods: {
         home: function () {
-            this.$router.push("/");
+            this.$router.push("/index");
         },
 
         edit: function () {
             this.$router.push("/editBlog");
         },
 
-        exit: function(){
-            
-        }
+        exit: function () {
+            localStorage.removeItem("token");
+            this.$router.push("/login");
+        },
     },
 };
 </script>
@@ -38,7 +39,7 @@ export default {
     align-items: center;
     justify-content: center;
     width: 100%;
-    background: #3498db;
+    background: #74b9ff;
 }
 
 img {

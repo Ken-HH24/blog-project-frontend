@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="body">
-                <article>{{ blog.content }}</article>
+                <article>{{ blog.content | snippet }}</article>
             </div>
         </div>
         <div id="option">
@@ -46,6 +46,12 @@ export default {
     data() {
         return {};
     },
+
+    filters: {
+        snippet: function (value) {
+            return value.slice(0, 25) + " ...";
+        },
+    },
 };
 </script>
 
@@ -54,7 +60,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    border-left: solid 10px #3498db;
+    border-left: solid 10px #74b9ff;
     padding: 20px;
     margin: 20px;
 }
@@ -94,10 +100,10 @@ a {
 
 section {
     margin: 4px;
-    border-radius: 4px;
+    border-radius: 15px;
     font: 10px;
-    padding: 5px;
-    background: #f1c40f;
+    padding: 5px 10px;
+    background: #ffe692;
 }
 
 .body {

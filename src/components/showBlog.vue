@@ -27,7 +27,6 @@ export default {
 
     methods: {
         updateContent: function () {
-            console.log(this.blog.content);
             this.$refs.content.innerHTML = marked(this.blog.content);
         },
     },
@@ -65,10 +64,10 @@ h2 {
 
 section {
     margin: 4px;
-    border-radius: 4px;
+    border-radius: 15px;
     font: 10px;
-    background: #f1c40f;
-    padding: 5px;
+    background: #FFE692;
+    padding: 5px 15px;
 }
 
 .body {
