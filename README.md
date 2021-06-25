@@ -1,6 +1,6 @@
-# vue_learn
+# blog-project
 
-> A Vue.js project
+> A simple blog project using vue
 
 ## Build Setup
 
