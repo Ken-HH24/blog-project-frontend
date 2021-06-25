@@ -1,5 +1,6 @@
 <template>
     <div id="index">
+        <div id="test"></div>
         <app-header></app-header>
         <div class="body">
             <h1>Welcome {{ user }}</h1>
