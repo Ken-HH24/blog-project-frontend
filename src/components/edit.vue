@@ -71,7 +71,7 @@ export default {
 
 #edit-area {
     width: 50%;
-    margin: 20px;
+    margin: 0 20px;
     padding: 20px;
     display: flex;
     flex-direction: column;

@@ -15,6 +15,9 @@
                 <div class="btn" v-on:click="register">register</div>
                 <div class="btn" v-on:click="login">login</div>
             </div>
+            <div class="error">
+                <span v-show="error">Email or password is wrong</span>
+            </div>
         </div>
     </div>
 </template>
@@ -27,6 +30,7 @@ export default {
                 email: "",
                 password: "",
             },
+            error: false,
         };
     },
 
@@ -46,7 +50,7 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err);
-                    this.$router.push("/login");
+                    this.error = true;
                 });
         },
 
@@ -66,14 +70,14 @@ export default {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    background: linear-gradient(45deg, #ffeaa7, 35%, #fdcb6e, 65%, #ffeaa7);
+    background: linear-gradient(30deg, #55efc4, 25%, #81ecec, 45%, #74b9ff);
 }
 
 #form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5% 7%;
+    padding: 4% 7%;
     border-radius: 20px;
     background: white;
     box-shadow: 4px 10px 8px 3px #34495e;
@@ -136,5 +140,13 @@ input {
 
 .spe:hover {
     transform: rotate(360deg);
+}
+
+.error{
+    margin-top: 20px;
+    margin-bottom: 0;
+    height: 20px;
+    color: #e74c3c;
+    text-align: center;
 }
 </style>

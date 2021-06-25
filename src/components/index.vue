@@ -37,7 +37,8 @@ export default {
     computed: {
         filterBlogs: function () {
             return this.blogs.filter((blog) => {
-                return blog.title.match(this.search);
+                const search = this.search.toLowerCase();
+                return blog.title.toLowerCase().match(this.search);
             });
         },
 

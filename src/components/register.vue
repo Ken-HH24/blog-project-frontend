@@ -15,6 +15,10 @@
             <input type="password" id="password" v-model="user.password" />
             <div>
                 <div class="btn" v-on:click="register">register</div>
+                <div class="btn" v-on:click="back">back</div>
+            </div>
+            <div class="error">
+                <span v-show="error">{{ msg }}</span>
             </div>
         </div>
     </div>
@@ -29,10 +33,16 @@ export default {
                 username: "",
                 password: "",
             },
-        };
+            error: false,
+            msg: "Email has already existed",
+        }
     },
 
     methods: {
+        back: function(){
+            this.$router.push("login");
+        },
+
         register: function () {
             this.$axios
                 .post("http://localhost:3000/register", {
@@ -47,10 +57,11 @@ export default {
                 })
                 .catch((err) => {
                     console.log(err);
-                });
+                    this.error = true;
+                })
         },
     },
-};
+}
 </script>
 
 <style scoped>
@@ -62,14 +73,14 @@ export default {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    background: linear-gradient(45deg, #ffeaa7, 35%, #fdcb6e, 65%, #ffeaa7);
+    background: linear-gradient(45deg, #0984e3, 25%, #74b9ff, 55%, #55efc4);
 }
 
 #form {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 5% 7%;
+    padding: 4% 7%;
     border-radius: 20px;
     background: white;
     box-shadow: 4px 10px 8px 3px #34495e;
@@ -111,6 +122,7 @@ input {
 
 .btn:nth-of-type(2) {
     background-color: #74b9ff;
+    margin-bottom: 0;
 }
 
 .spe {
@@ -132,5 +144,12 @@ input {
 
 .spe:hover {
     transform: rotate(360deg);
+}
+
+.error{
+    margin-top: 20px;
+    height: 20px;
+    color: #e74c3c;
+    text-align: center;
 }
 </style>
